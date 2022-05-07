@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "45409933349",
+    "project_id": "elmap-349114",
+    "storage_bucket": "elmap-349114.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45409933349:android:775eb0f38d5b75fb0b87cc",
+        "android_client_info": {
+          "package_name": "com.webdojobg.elmap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "45409933349-hcuber85qliboh6pn2nb1ia8rb9ku9ds.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.webdojobg.elmap",
+            "certificate_hash": "c308548b16303241f9af64b98574e782d709002c"
+          }
+        },
+        {
+          "client_id": "45409933349-mnfjau22oqb2v70kpvik27prl26snvd6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPO6XRm1N2z998_-wd5qVx-LcbWzqMRwU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "45409933349-mnfjau22oqb2v70kpvik27prl26snvd6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
