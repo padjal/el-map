@@ -9,6 +9,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
+@Deprecated("Class currently not used. Should be later implemented using Kotlin Flows.")
 class StationsFirebaseDataSource {
     val database = FirebaseFirestore.getInstance()
 
