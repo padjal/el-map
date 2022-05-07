@@ -14,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.webdojobg.elmap.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         // Inflate the main activity xml file
         binding = ActivityMainBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         // Setup bottom navigation

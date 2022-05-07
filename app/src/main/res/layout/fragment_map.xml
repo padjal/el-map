@@ -1,15 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.map.MapFragment">
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/map"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+        tools:context=".ui.map.MapFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:gravity="center"
+            android:id="@+id/stationsInfo"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="100dp"
+            android:orientation="vertical"
+            android:background="@color/purple_500">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:id="@+id/stationsInfo_hide"
+                android:layout_height="wrap_content"
+                android:text="Hide"
+                android:layout_gravity="right"
+                android:backgroundTint="@color/purple_200"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_settings_24"
+                android:minHeight="150dp"
+                android:minWidth="150dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/station_address"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:text="Here goes the address" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:id="@+id/station_name"
+                android:text="Station number" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/station_navigate"
+                    android:text="@string/station_navigation"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/station_report"
+                    android:layout_margin="10dp"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+</RelativeLayout>
+

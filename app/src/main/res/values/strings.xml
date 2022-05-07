@@ -5,4 +5,7 @@
     <string name="profile_settings">Настройки</string>
     <string name="profile_favourites">Любимые</string>
     <string name="profile_about">О приложении</string>
+    <string name="station_navigation">Путь</string>
+    <string name="station_report">Проблем</string>
+
 </resources>
