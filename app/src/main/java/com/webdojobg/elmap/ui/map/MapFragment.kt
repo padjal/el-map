@@ -81,7 +81,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListe
         root.findViewById<Button>(R.id.station_navigate).setOnClickListener {
             // Create a Uri from an intent string. Use the result to create an Intent.
             val gmmIntentUri =
-                Uri.parse("google.navigation:q=${viewModel.selectedStation.value?.address}}")
+                Uri.parse("google.navigation:q=${viewModel.selectedStation.value?.location?.latitude},${viewModel.selectedStation.value?.location?.longitude}")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")
             startActivity(mapIntent)
