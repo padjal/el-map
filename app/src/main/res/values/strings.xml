@@ -7,5 +7,5 @@
     <string name="profile_about">О приложении</string>
     <string name="station_navigation">Путь</string>
     <string name="station_report">Проблем</string>
-
+    <string name="about">This is my first android app. I tried to include as mony concepts as possible in order to illustrate the power of android, but there is still a lot to be improved.</string>
 </resources>

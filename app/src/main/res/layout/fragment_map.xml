@@ -15,6 +15,7 @@
 
         <LinearLayout
             android:gravity="center"
+            android:clickable="true"
             android:id="@+id/stationsInfo"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
@@ -31,11 +32,12 @@
                 android:layout_height="wrap_content"
                 android:text="Hide"
                 android:layout_gravity="right"
-                android:backgroundTint="@color/purple_200"
-                />
+                android:layout_marginBottom="-40dp"
+                android:backgroundTint="@color/purple_200"/>
 
             <ImageView
                 android:layout_width="wrap_content"
+                android:id="@+id/station_image"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_settings_24"
                 android:minHeight="150dp"
@@ -65,6 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/station_navigate"
+                    android:backgroundTint="@color/green"
                     android:text="@string/station_navigation"
                     android:layout_margin="10dp"/>
 
@@ -72,6 +75,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/station_report"
+                    android:backgroundTint="@color/red"
                     android:layout_margin="10dp"/>
             </LinearLayout>
 

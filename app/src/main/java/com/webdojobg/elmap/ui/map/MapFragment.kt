@@ -8,12 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -21,9 +23,13 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import com.webdojobg.elmap.R
 import com.webdojobg.elmap.data.models.Station
 import com.webdojobg.elmap.databinding.FragmentMapBinding
+import java.io.File
 
 class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     private lateinit var _gMap : GoogleMap
@@ -60,6 +66,14 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListe
                 selectedStation ->
                 root.findViewById<TextView>(R.id.station_address).text = selectedStation.address
                 root.findViewById<TextView>(R.id.station_name).text = selectedStation.name
+                val imageView = root.findViewById<ImageView>(R.id.station_image)
+
+                FirebaseStorage.getInstance().reference.child("${selectedStation.imageUrl}").downloadUrl.addOnSuccessListener {
+                    // Got the download URL for 'users/me/profile.png'
+                    Glide.with(this).load(it).into(imageView);
+                }.addOnFailureListener {
+                    // Handle any errors
+                }
             }
         )
 

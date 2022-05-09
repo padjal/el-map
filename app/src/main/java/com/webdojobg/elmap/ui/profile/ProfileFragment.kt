@@ -1,12 +1,17 @@
 package com.webdojobg.elmap.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import com.webdojobg.elmap.R
+import com.webdojobg.elmap.databinding.FragmentAboutBinding
 import com.webdojobg.elmap.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
@@ -28,10 +33,11 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val textView: TextView = binding.textDashboard
-//        dashboardViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
+        root.findViewById<LinearLayout>(R.id.profile_about).setOnClickListener {
+            //view?.findNavController()?.navigate(R.id.navigation_about)
+            view?.findNavController()?.navigate(R.id.action_navigation_profile_to_navigation_about)
+        }
+
         return root
     }
 
