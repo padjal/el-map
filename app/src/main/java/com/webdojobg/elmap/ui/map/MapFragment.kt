@@ -14,7 +14,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -23,23 +22,19 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.ktx.storage
 import com.webdojobg.elmap.R
 import com.webdojobg.elmap.data.models.Station
 import com.webdojobg.elmap.databinding.FragmentMapBinding
-import java.io.File
 
+/**
+ * A fragment, which contains the map and displays information about the currently selected map.
+ *
+ */
 class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
-    private lateinit var _gMap : GoogleMap
-    private var _binding: FragmentMapBinding? = null
+    private lateinit var _gMap: GoogleMap
+    private lateinit var _binding: FragmentMapBinding
     val viewModel: MapViewModel by viewModels()
-    val stationsList = ArrayList<Station>()
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,23 +42,21 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListe
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMapBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        val root: View = _binding.root
 
         val stationInfo = root.findViewById<LinearLayout>(R.id.stationsInfo)
         viewModel.isStationInfoVisible.observe(
-            viewLifecycleOwner, Observer {
-                visible ->
-                if(visible){
+            viewLifecycleOwner, Observer { visible ->
+                if (visible) {
                     stationInfo.visibility = View.VISIBLE
-                }else{
+                } else {
                     stationInfo.visibility = View.GONE
                 }
             }
         )
 
         viewModel.selectedStation.observe(
-            viewLifecycleOwner, Observer {
-                selectedStation ->
+            viewLifecycleOwner, Observer { selectedStation ->
                 root.findViewById<TextView>(R.id.station_address).text = selectedStation.address
                 root.findViewById<TextView>(R.id.station_name).text = selectedStation.name
                 val imageView = root.findViewById<ImageView>(R.id.station_image)
@@ -78,18 +71,17 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListe
         )
 
         viewModel.stations.observe(
-            viewLifecycleOwner, Observer {
-                stations -> // update ui
+            viewLifecycleOwner, Observer { stations -> // update ui
                 // add marker to map
-                for (station in stations){
+                for (station in stations) {
                     addMarker(station)
                 }
-                Log.i("mapViewModel",stations.toString())
+                Log.i("mapViewModel", stations.toString())
             }
         )
 
-        root.findViewById<Button>(R.id.stationsInfo_hide).setOnClickListener {
-            buttonView -> viewModel.isStationInfoVisible.value = false
+        root.findViewById<Button>(R.id.stationsInfo_hide).setOnClickListener { buttonView ->
+            viewModel.isStationInfoVisible.value = false
         }
 
         root.findViewById<Button>(R.id.station_navigate).setOnClickListener {
@@ -107,17 +99,18 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListe
         return root
     }
 
+    /**
+     * Add a marker on the map for a given station. The station's location and name are used to specify
+     * the location and title of the marker.
+     *
+     * @param station The given station.
+     */
     private fun addMarker(station: Station) {
         _gMap.addMarker(
             MarkerOptions()
                 .position(station.location)
                 .title(station.name)
         )
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

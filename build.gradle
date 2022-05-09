@@ -2,7 +2,7 @@
 buildscript {
     dependencies {
         classpath 'com.google.gms:google-services:4.3.10'
-
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:1.6.21"
     }
 }
 
@@ -16,3 +16,5 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+apply plugin: "org.jetbrains.dokka"

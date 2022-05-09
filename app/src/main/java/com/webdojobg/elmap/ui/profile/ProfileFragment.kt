@@ -1,37 +1,31 @@
 package com.webdojobg.elmap.ui.profile
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.webdojobg.elmap.R
-import com.webdojobg.elmap.databinding.FragmentAboutBinding
 import com.webdojobg.elmap.databinding.FragmentProfileBinding
 
+/**
+ * A fragment used for showing the profile page of each user.
+ *
+ */
 class ProfileFragment : Fragment() {
 
-    private var _binding: FragmentProfileBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var _binding: FragmentProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(ProfileViewModel::class.java)
-
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        val root: View = _binding.root
 
         root.findViewById<LinearLayout>(R.id.profile_about).setOnClickListener {
             //view?.findNavController()?.navigate(R.id.navigation_about)
@@ -39,10 +33,5 @@ class ProfileFragment : Fragment() {
         }
 
         return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

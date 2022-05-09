@@ -6,10 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.webdojobg.elmap.databinding.FragmentAboutBinding
-import com.webdojobg.elmap.databinding.FragmentProfileBinding
 
+/**
+ * A fragment for showing the about section of the application.
+ *
+ */
 class AboutAppFragment : Fragment() {
-    private lateinit var binding : FragmentAboutBinding
+    private lateinit var binding: FragmentAboutBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -18,9 +21,6 @@ class AboutAppFragment : Fragment() {
     ): View? {
         binding = FragmentAboutBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-
-        //activity?.actionBar?.setDisplayHomeAsUpEnabled(true)
 
         return root
     }

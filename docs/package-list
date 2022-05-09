@@ -1,0 +1,10 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+
+module:app
+com.webdojobg.elmap
+com.webdojobg.elmap.data.datasources
+com.webdojobg.elmap.data.models
+com.webdojobg.elmap.data.repositories
+com.webdojobg.elmap.ui.map
+com.webdojobg.elmap.ui.profile

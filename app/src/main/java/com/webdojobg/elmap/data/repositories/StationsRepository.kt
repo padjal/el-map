@@ -8,23 +8,35 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.webdojobg.elmap.data.datasources.StationsFirebaseDataSource
 import com.webdojobg.elmap.data.models.Station
 import com.webdojobg.elmap.data.models.Station.Companion.toStation
-import kotlinx.coroutines.runBlocking
 
+/**
+ * A repository class for stations objects.
+ *
+ * @property stationsFirebaseDataSource NOT_IMPLEMENTED_YET! A Firebase datasource for retrieving stations from the Firebase
+ * Firestore realtime noSQL database.
+ * @property firebaseInstance The instance of the firebase realtime database needed for getting the stations.
+ */
 class StationsRepository(
     private val stationsFirebaseDataSource: StationsFirebaseDataSource = StationsFirebaseDataSource(),
-    private val firebase : FirebaseFirestore = FirebaseFirestore.getInstance()
+    private val firebaseInstance: FirebaseFirestore = FirebaseFirestore.getInstance()
 ) {
-    fun getStations() : LiveData<List<Station>> {
+
+    /**
+     * Get all stations from the database. The return type of the function is LiveData in order to support
+     * data flow from the data to the ui layer.
+     *
+     * @return A LiveData object, which references a list of stations.
+     */
+    fun getStations(): LiveData<List<Station>> {
         val stations = MutableLiveData<List<Station>>()
 
-        firebase.collection("stations")
+        firebaseInstance.collection("stations")
             .get()
-            .addOnSuccessListener {
-                snapshot ->
-                if(snapshot != null){
+            .addOnSuccessListener { snapshot ->
+                if (snapshot != null) {
                     val listOfStations = ArrayList<Station>()
 
-                    for (document in snapshot.documents){
+                    for (document in snapshot.documents) {
                         listOfStations.add(document.toStation()!!)
                         Log.i(TAG, document.toString())
                     }
