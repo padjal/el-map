@@ -24,7 +24,7 @@
             android:layout_marginBottom="50dp"
             android:layout_marginTop="100dp"
             android:orientation="vertical"
-            android:background="@color/purple_500">
+            android:background="@color/blue_main">
 
             <Button
                 android:layout_width="wrap_content"
